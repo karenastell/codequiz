@@ -60,7 +60,7 @@
     margin: 30px 300px;
 }
 
-.start-btn {
+.buttonEl {
     display: flex;
     justify-content: center;
     align-items: center;
