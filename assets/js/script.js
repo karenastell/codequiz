@@ -43,3 +43,4 @@ setTime();
 var highScores = document.querySelector(".high-scores");
 var backBtn = document.querySelector(".go-back");
 var clearBtn = document.querySelector(".clear-score");
+
