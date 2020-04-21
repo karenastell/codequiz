@@ -44,3 +44,14 @@ var highScores = document.querySelector(".high-scores");
 var backBtn = document.querySelector(".go-back");
 var clearBtn = document.querySelector(".clear-score");
 
+backBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    location.href = "index.html"
+});
+
+clearBtn.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    localStorage.clear();
+});
+
