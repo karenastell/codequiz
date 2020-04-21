@@ -1,6 +1,12 @@
 // script for index.html
 
 var timeEl = document.querySelector(".timer");
+var questionEl = document.querySelector(".instructions");
+var indexHeading = document.querySelector(".index-heading");
+var indexBtn = document.querySelector(".index-btn");
+
+
+
 
 var secondsLeft = 30;
 
@@ -32,18 +38,8 @@ setTime();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // script for highscores.html
+
+var highScores = document.querySelector(".high-scores");
+var backBtn = document.querySelector(".go-back");
+var clearBtn = document.querySelector(".clear-score");
