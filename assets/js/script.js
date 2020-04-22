@@ -4,41 +4,12 @@ var timeEl = document.querySelector(".timer");
 var questionEl = document.querySelector(".instructions");
 var indexHeading = document.querySelector(".index-heading");
 var startBtn = document.querySelector(".start-btn");
-
-
-
+var choiceBtns = document.querySelector(".choice-btns");
 
 var secondsLeft = 90;
 
-function setTime() {
-    var timerInterval = setInterval(function () {
-        secondsLeft--;
-        timeEl.textContent = "Time Left: " + secondsLeft;
 
-        if (secondsLeft === 0) {
-            clearInterval(timerInterval);
-            //sendMessage();
-        }
-
-    }, 1000);
-}
-
-// function sendMessage() {
-//   timeEl.textContent = " ";
-
-//   var imgEl = document.createElement("img");
-
-//   imgEl.setAttribute("src", "images/image_1.jpg");
-//   mainEl.appendChild(imgEl);
-
-// }
-
-
-
-
-
-
-var questions = [
+var allQuestions = [
     {
         question: "No one can feed garbage to pigs without first obtaining a permit.",
         answers: ["Arizona", "California", "New Hampshire", "Mississippi"],
@@ -93,23 +64,104 @@ var questions = [
     }
 ];
 
+// hides the choice buttons until a question comes up
+$(".choice-btns").hide();
 
+// timer function
+// function setTime() {
+//     var timerInterval = setInterval(function () {
+//         secondsLeft--;
+//         timeEl.textContent = "Time Left: " + secondsLeft;
+
+//         if (secondsLeft === 0) {
+//             clearInterval(timerInterval);
+//             questionEl.textContent = "Time Is Up!"
+//             $(".choice-btns").hide();
+
+//         }
+
+//     }, 1000);
+// }
+
+
+
+// function to display questions
 function displayQuestions() {
-    startBtn.style.display = "none";
-    index = Math.floor(Math.random() * questions.length);
-    choice = questions[index];
+
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+        timeEl.textContent = "Time Left: " + secondsLeft;
+
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            questionEl.textContent = "Time Is Up!"
+            $(".choice-btns").hide();
+
+        }
+
+    }, 1000);
+
+
+    $(".choice-btns").show();
+    index = Math.floor(Math.random() * allQuestions.length);
+    choice = allQuestions[index];
     questionEl.innerHTML = choice.question;
 
-    for (var i = 0; i < choice.answers.length; i++) {
-        console.log(choice.answers[i]);
+    $(".btn1").text(choice.answers[0]);
+    $(".btn2").text(choice.answers[1]);
+    $(".btn3").text(choice.answers[2]);
+    $(".btn4").text(choice.answers[3]);
+    console.log("choice.correctAnswer" + choice.correctAnswer);
 
-    }
+    $(".btn1").on("click", function () {
+        if (0 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+        } else {
+            $(".grade").text("Wrong!");
+            secondsLeft - 10;
+        }
+    })
+
+    $(".btn2").on("click", function () {
+        if (1 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+        } else {
+            $(".grade").text("Wrong!");
+            secondsLeft - 10;
+        }
+    })
+
+    $(".btn3").on("click", function () {
+        if (2 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+        } else {
+            $(".grade").text("Wrong!");
+            secondsLeft - 10;
+        }
+    })
+
+    $(".btn4").on("click", function () {
+        if (3 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+        } else {
+            $(".grade").text("Wrong!");
+            secondsLeft - 10;
+        }
+    })
+    //  }
+    //i++
+    // console.log("end of function" + i);
+
 };
+
 
 
 startBtn.addEventListener("click", function () {
     displayQuestions();
     setTime();
+
+    $(".start-btn").hide();
+
 });
 
 
@@ -124,15 +176,14 @@ var highScores = document.querySelector(".high-scores");
 var backBtn = document.querySelector(".go-back");
 var clearBtn = document.querySelector(".clear-score");
 
-backBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    location.href = "index.html"
-});
+// backBtn.addEventListener("click", function () {
+//     location.href = "index.html"
+// });
 
-clearBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    localStorage.clear();
-});
+// clearBtn.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     localStorage.clear();
+// });
 
 
 

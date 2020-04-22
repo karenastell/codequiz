@@ -84,3 +84,30 @@
     font-weight: bold;
     text-align: right;
 }
+
+.choice-btns {
+    padding-top: 50px;
+}
+
+.four-btns{
+    width: 250px;
+    height: 45px;
+}
+
+.padding-btns-left {
+    padding-left: 130px;
+}
+.padding-btns-right {
+    padding-right: 130px;
+}
+
+.disappear {
+    display: none;
+}
+
+.grade {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: red;
+}
