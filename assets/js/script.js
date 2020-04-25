@@ -122,7 +122,11 @@ function checkAnswers() {
     } else {
         //alert("wrong!")
         $(".grade").text("Wrong!");
-        secondsLeft = secondsLeft - 10;
+        if (secondsLeft > 10) {
+            secondsLeft = secondsLeft - 10;
+        } else {
+            secondsLeft = 1;
+        }
     }
     setTimeout(function () {
         $(".grade").hide();
@@ -136,13 +140,27 @@ function checkAnswers() {
 }
 var nameInput = $(".name").value;
 console.log(nameInput);
-secondsLeft
 
 
-function saveScore() {
+
+function saveScore(secondsLeft) {
     var scoreObject = {
-        score: score,
+        score: secondsLeft,
         name: nameInput
+    }
+    var scores = getScoresFromLS();
+    scores.push(scoreObject);
+    var scoresJSON = JSON.stringify(scores);
+    localStorage.setItem("scores", scoresJSON);
+
+}
+
+function getScoresFromLS() {
+    var scores = localStorage.getItem("scores");
+    if (scores) {
+        return JSON.parse(scores);
+    } else {
+        return [];
     }
 }
 
