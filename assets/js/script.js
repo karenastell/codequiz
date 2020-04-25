@@ -11,7 +11,7 @@ var currentQuestionIndex = 0;
 $(".timer").text("Time left: " + secondsLeft);
 $(".buttons").hide();
 $(".questions").hide();
-$(".nameInput").hide();
+$(".name-input").hide();
 //var name = nameInput.value;
 
 var allQuestions = [
@@ -72,7 +72,7 @@ var allQuestions = [
 function endGame() {
     $(".questions").text("Game Over!");
     $(".buttons").hide();
-    $(".nameInput").show() + "Enter Your Initials";
+    $(".name-input").show() + "Enter Your Initials";
     // save the time first for high scores
 
 }
@@ -96,11 +96,7 @@ function startTime() {
 
 var i = 0;
 function displayQuestions() {
-    // alert("displayQuestions");
 
-    //for (var i = 0; i < allQuestions.length; i++) {
-    console.log(allQuestions[i].question);
-    console.log(allQuestions[i].answers);
 
     $(".questions").text(allQuestions[i].question);
 
@@ -109,11 +105,7 @@ function displayQuestions() {
     $(".btn2").text(allQuestions[i].answers[2]);
     $(".btn3").text(allQuestions[i].answers[3]);
 
-    i++;
-    if (i === 10) {
-        endGame();
-    }
-    //s console.log(i);
+    // console.log(i);
 };
 
 
@@ -121,7 +113,7 @@ function checkAnswers() {
     var buttonClicked = event.target;
     var choosenAsnwerIndex = buttonClicked.getAttribute("data-index");
 
-    console.log(choosenAsnwerIndex);
+    console.log("choosenAnswerIndex", choosenAsnwerIndex);
     console.log("correct answer" + allQuestions[i].correctAnswer);
     $(".grade").show();
     if (choosenAsnwerIndex == allQuestions[i].correctAnswer) {
@@ -130,32 +122,31 @@ function checkAnswers() {
     } else {
         //alert("wrong!")
         $(".grade").text("Wrong!");
+        secondsLeft = secondsLeft - 10;
     }
-
     setTimeout(function () {
         $(".grade").hide();
     }, 1000);
-    displayQuestions();
+    i++;
+    if (i == 10) {
+        endGame();
+    } else {
+        displayQuestions();
+    }
+}
+var nameInput = $(".name").value;
+console.log(nameInput);
+secondsLeft
+
+
+function saveScore() {
+    var scoreObject = {
+        score: score,
+        name: nameInput
+    }
 }
 
-//JSON for answers?
 
-
-// var answerBtns = $("<button>");
-// answerBtns.addClass("btn btn-danger four-btns answer")
-// answerBtns.attr("data-answer", answer);
-// answerBtns.text(answer);
-// $(".buttons").append(answerBtns);
-// return
-
-//}
-
-
-
-// on click for each button needs to run displayQuestions function again
-// $(".next").on("click", function () {
-//     displayQuestions();
-// });
 
 
 $(".start-btn").on("click", function () {
