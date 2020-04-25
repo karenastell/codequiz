@@ -6,9 +6,9 @@ var startBtn = document.querySelector(".start-btn");
 var choiceBtns = document.querySelector(".buttons");
 
 
-var secondsLeft = 20;
+var secondsLeft = 0;
 var currentQuestionIndex = 0;
-$(".timer").text("Time left: 0");
+$(".timer").text("Time left: " + secondsLeft);
 $(".buttons").hide();
 $(".questions").hide();
 $(".nameInput").hide();
@@ -73,16 +73,19 @@ function endGame() {
     $(".questions").text("Game Over!");
     $(".buttons").hide();
     $(".nameInput").show() + "Enter Your Initials";
-    clearInterval(timerInterval);
+    // save the time first for high scores
+
 }
 
 function startTime() {
+    secondsLeft = 75;
+    $(".timer").text("Time Left: " + secondsLeft);
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = "Time Left: " + secondsLeft;
 
         if (secondsLeft === 0) {
-
+            clearInterval(timerInterval);
             endGame();
         }
 
@@ -93,40 +96,66 @@ function startTime() {
 
 var i = 0;
 function displayQuestions() {
-    alert("displayQuestions");
+    // alert("displayQuestions");
 
     //for (var i = 0; i < allQuestions.length; i++) {
     console.log(allQuestions[i].question);
     console.log(allQuestions[i].answers);
-    console.log(allQuestions[i].correctAnswer);
+
     $(".questions").text(allQuestions[i].question);
 
-
-    //JSON for answers?
-
-
-    // var answerBtns = $("<button>");
-    // answerBtns.addClass("btn btn-danger four-btns answer")
-    // answerBtns.attr("data-answer", answer);
-    // answerBtns.text(answer);
-    // $(".buttons").append(answerBtns);
-    // return
-
-    //}
+    $(".btn0").text(allQuestions[i].answers[0]);
+    $(".btn1").text(allQuestions[i].answers[1]);
+    $(".btn2").text(allQuestions[i].answers[2]);
+    $(".btn3").text(allQuestions[i].answers[3]);
 
     i++;
     if (i === 10) {
         endGame();
     }
-
-
-
+    //s console.log(i);
 };
 
-// on click for each button needs to run displayQuestions function again
-$(".next").on("click", function () {
+
+function checkAnswers() {
+    var buttonClicked = event.target;
+    var choosenAsnwerIndex = buttonClicked.getAttribute("data-index");
+
+    console.log(choosenAsnwerIndex);
+    console.log("correct answer" + allQuestions[i].correctAnswer);
+    $(".grade").show();
+    if (choosenAsnwerIndex == allQuestions[i].correctAnswer) {
+        //alert("correct!");         
+        $(".grade").text("Correct!");
+    } else {
+        //alert("wrong!")
+        $(".grade").text("Wrong!");
+    }
+
+    setTimeout(function () {
+        $(".grade").hide();
+    }, 1000);
     displayQuestions();
-});
+}
+
+//JSON for answers?
+
+
+// var answerBtns = $("<button>");
+// answerBtns.addClass("btn btn-danger four-btns answer")
+// answerBtns.attr("data-answer", answer);
+// answerBtns.text(answer);
+// $(".buttons").append(answerBtns);
+// return
+
+//}
+
+
+
+// on click for each button needs to run displayQuestions function again
+// $(".next").on("click", function () {
+//     displayQuestions();
+// });
 
 
 $(".start-btn").on("click", function () {
@@ -138,6 +167,7 @@ $(".start-btn").on("click", function () {
     displayQuestions();
 });
 
+$(".buttons").on("click", checkAnswers);
 
 
 
