@@ -1,18 +1,13 @@
 // script for index.html
 
 var timeEl = document.querySelector(".timer");
+var questionEl = document.querySelector(".instructions");
 var indexHeading = document.querySelector(".index-heading");
 var startBtn = document.querySelector(".start-btn");
-var choiceBtns = document.querySelector(".buttons");
+var choiceBtns = document.querySelector(".choice-btns");
 
+var secondsLeft = 75;
 
-var secondsLeft = 20;
-var currentQuestionIndex = 0;
-$(".timer").text("Time left: 0");
-$(".buttons").hide();
-$(".questions").hide();
-$(".nameInput").hide();
-//var name = nameInput.value;
 
 var allQuestions = [
     {
@@ -69,73 +64,94 @@ var allQuestions = [
     }
 ];
 
-function endGame() {
-    $(".questions").text("Game Over!");
-    $(".buttons").hide();
-    $(".nameInput").show() + "Enter Your Initials";
-    clearInterval(timerInterval);
-}
+// hides the choice buttons until a question comes up
+$(".choice-btns").hide();
 
-function startTime() {
+// timer function
+function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = "Time Left: " + secondsLeft;
 
         if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            questionEl.textContent = "Time Is Up!"
+            $(".choice-btns").hide();
 
-            endGame();
         }
 
     }, 1000);
+}
 
-};
 
 
-var i = 0;
+// function to display questions
 function displayQuestions() {
-    alert("displayQuestions");
-
-    //for (var i = 0; i < allQuestions.length; i++) {
-    console.log(allQuestions[i].question);
-    console.log(allQuestions[i].answers);
-    console.log(allQuestions[i].correctAnswer);
-    $(".questions").text(allQuestions[i].question);
 
 
-    //JSON for answers?
+    $(".choice-btns").show();
+    index = Math.floor(Math.random() * allQuestions.length);
+    choice = allQuestions[index];
+    questionEl.innerHTML = choice.question;
 
+    $(".btn1").text(choice.answers[0]);
+    $(".btn2").text(choice.answers[1]);
+    $(".btn3").text(choice.answers[2]);
+    $(".btn4").text(choice.answers[3]);
+    console.log("choice.correctAnswer" + choice.correctAnswer);
 
-    // var answerBtns = $("<button>");
-    // answerBtns.addClass("btn btn-danger four-btns answer")
-    // answerBtns.attr("data-answer", answer);
-    // answerBtns.text(answer);
-    // $(".buttons").append(answerBtns);
-    // return
+    $(".btn1").on("click", function () {
+        if (0 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+            console.log(secondsLeft);
+        } else {
+            $(".grade").text("Wrong!");
+            console.log(secondsLeft);
 
-    //}
+        }
+    })
 
-    i++;
-    if (i === 10) {
-        endGame();
-    }
+    $(".btn2").on("click", function () {
+        if (1 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+            console.log(secondsLeft);
+        } else {
+            $(".grade").text("Wrong!");
 
+        }
+    })
+
+    $(".btn3").on("click", function () {
+        if (2 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+            console.log(secondsLeft);
+        } else {
+            $(".grade").text("Wrong!");
+
+        }
+    })
+
+    $(".btn4").on("click", function () {
+        if (3 === choice.correctAnswer) {
+            $(".grade").text("Correct!");
+            console.log(secondsLeft);
+        } else {
+            $(".grade").text("Wrong!");
+
+        }
+    })
 
 
 };
 
-// on click for each button needs to run displayQuestions function again
-$(".next").on("click", function () {
+
+
+startBtn.addEventListener("click", function () {
     displayQuestions();
-});
+    setTime();
 
-
-$(".start-btn").on("click", function () {
-    $(".intro").hide();
     $(".start-btn").hide();
-    $(".questions").show();
-    $(".buttons").show();
-    startTime();
-    displayQuestions();
+
 });
 
 
@@ -143,6 +159,21 @@ $(".start-btn").on("click", function () {
 
 
 
+
+// script for highscores.html
+
+var highScores = document.querySelector(".high-scores");
+var backBtn = document.querySelector(".go-back");
+var clearBtn = document.querySelector(".clear-score");
+
+// backBtn.addEventListener("click", function () {
+//     location.href = "index.html"
+// });
+
+// clearBtn.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     localStorage.clear();
+// });
 
 
 
