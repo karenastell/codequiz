@@ -9,13 +9,14 @@
     background-image: url(https://cdn5.vectorstock.com/i/1000x1000/48/99/seamless-pattern-question-marks-quiz-background-vector-29564899.jpg);
 }
 
-/* .score-body {
-    background-image: url(https://lh3.googleusercontent.com/proxy/nUXLZAHNy77mUWeyNtt4ZCsCr_3oEEM6UfbX2DIriyR5bRN-PXcF6QwQQCK_W1Av3J5hVP9oznvPriq_cEAKmQNhp9WwXN-aVfBUWpbXSfb5t9LpgAi2u6AqLpo);
-    /* height: 100%; */
-    /* background-position: center; */
-    /* background-repeat: no-repeat; */
-    /* background-size: cover;
-} */ 
+.score-body {
+     height: 100%;
+     background-position: center; 
+     background-repeat: no-repeat; 
+     background-size: cover;
+} 
+
+
 .link {
     background-color: orange;
     font-size: 24px;
@@ -27,7 +28,7 @@
     text-align: center;
     font-size: 50px;
     text-decoration: underline;
-    color: yellow;
+    color: red;
     font-weight: bold;
     padding: 40px;
     

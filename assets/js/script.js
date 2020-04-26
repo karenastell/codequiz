@@ -161,8 +161,12 @@ function saveScore(seconds) {
     var scoresJSON = JSON.stringify(scores);
     localStorage.setItem("scores", scoresJSON);
     console.log(nameInput);
+    nameInput.text("");
 
 }
+
+
+
 
 function getScoresFromLS() {
     scores = localStorage.getItem("scores");
