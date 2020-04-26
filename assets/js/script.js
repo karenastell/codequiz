@@ -13,6 +13,8 @@ $(".buttons").hide();
 $(".questions").hide();
 $(".name-input").hide();
 //var name = nameInput.value;
+var timerInterval;
+var scores;
 
 var allQuestions = [
     {
@@ -73,6 +75,8 @@ function endGame() {
     $(".questions").text("Game Over!");
     $(".buttons").hide();
     $(".name-input").show() + "Enter Your Initials";
+    $(".display-score").text(secondsLeft);
+    clearInterval(timerInterval);
     // save the time first for high scores
 
 }
@@ -80,7 +84,7 @@ function endGame() {
 function startTime() {
     secondsLeft = 75;
     $(".timer").text("Time Left: " + secondsLeft);
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = "Time Left: " + secondsLeft;
 
@@ -138,25 +142,31 @@ function checkAnswers() {
         displayQuestions();
     }
 }
-var nameInput = $(".name").value;
-console.log(nameInput);
 
 
 
-function saveScore(secondsLeft) {
+
+
+
+function saveScore(seconds) {
+    var nameInput = $(".name").val();
     var scoreObject = {
         score: secondsLeft,
         name: nameInput
     }
+    console.log(scoreObject);
+
     var scores = getScoresFromLS();
     scores.push(scoreObject);
     var scoresJSON = JSON.stringify(scores);
     localStorage.setItem("scores", scoresJSON);
+    console.log(nameInput);
+
 
 }
 
 function getScoresFromLS() {
-    var scores = localStorage.getItem("scores");
+    scores = localStorage.getItem("scores");
     if (scores) {
         return JSON.parse(scores);
     } else {
@@ -177,6 +187,7 @@ $(".start-btn").on("click", function () {
 });
 
 $(".buttons").on("click", checkAnswers);
+$(".submit-button").on("click", saveScore);
 
 
 
