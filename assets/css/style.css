@@ -6,14 +6,18 @@
     font-family: 'Amatic SC', cursive;
 }
 .index-body {
-    background-image: url(https://cdn5.vectorstock.com/i/1000x1000/48/99/seamless-pattern-question-marks-quiz-background-vector-29564899.jpg);
+
+background-image: url(/assets/images/indexbackground.jpg);
 }
 
-.score-body {
+
+.highscore-body {
+    background-image: url(/assets/images/highscoresbackground.jpg);
      height: 100%;
      background-position: center; 
      background-repeat: no-repeat; 
      background-size: cover;
+    
 } 
 
 
