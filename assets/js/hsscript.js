@@ -2,7 +2,7 @@ var showHighScores = JSON.parse(localStorage.getItem("scores"));
 var tableBodyElement = $(".score-body");
 
 showHighScores.forEach(function (score) {
-
+    // adds local storage info to the table element
     var tableRowElement = $("<tr>");
     var scoreTd = $("<td>").text(score.score);
     var nameTd = $("<td>").text(score.name);

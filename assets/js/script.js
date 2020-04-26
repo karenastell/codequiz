@@ -1,5 +1,3 @@
-// script for index.html
-
 var timeEl = document.querySelector(".timer");
 var indexHeading = document.querySelector(".index-heading");
 var startBtn = document.querySelector(".start-btn");
@@ -72,12 +70,12 @@ var allQuestions = [
 ];
 
 function endGame() {
+    // clears timeInterval and changes what you are viewing at the end of the game
     $(".questions").text("Game Over!");
     $(".buttons").hide();
     $(".name-input").show() + "Enter Your Initials";
     $(".display-score").text(secondsLeft);
     clearInterval(timerInterval);
-    // save the time first for high scores
 
 }
 
@@ -87,7 +85,7 @@ function startTime() {
     timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = "Time Left: " + secondsLeft;
-
+        // goes to end game after the seconds are finished
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
             endGame();
@@ -101,7 +99,8 @@ function startTime() {
 var i = 0;
 function displayQuestions() {
 
-
+    // takes questions and answers from the objects in the array
+    // and populates question container and buttons
     $(".questions").text(allQuestions[i].question);
 
     $(".btn0").text(allQuestions[i].answers[0]);
@@ -121,6 +120,7 @@ function checkAnswers() {
     if (buttonClicked.matches("button")) {
         console.log("choosenAnswerIndex", choosenAsnwerIndex);
         console.log("correct answer" + allQuestions[i].correctAnswer);
+        // shows correct, or wrong after question is answered
         $(".grade").show();
         if (choosenAsnwerIndex == allQuestions[i].correctAnswer) {
             //alert("correct!");         
@@ -129,6 +129,7 @@ function checkAnswers() {
             //alert("wrong!")
             $(".grade").text("Wrong!");
             if (secondsLeft > 10) {
+                // subtracts 10 seconds from time
                 secondsLeft = secondsLeft - 10;
             } else {
                 secondsLeft = 1;
@@ -137,7 +138,9 @@ function checkAnswers() {
         setTimeout(function () {
             $(".grade").hide();
         }, 1000);
+        // increments i to change the question and button options
         i++;
+        // if user has answered all the questios, end the game
         if (i == 10) {
             endGame();
         } else {
@@ -152,9 +155,10 @@ function checkAnswers() {
 
 
 function saveScore(seconds) {
-
+    // set a variable equal to the value of the input box
     var nameInput = $(".name").val();
 
+    // set a value to the object to be stored in local storage
     var scoreObject = {
         score: secondsLeft,
         name: nameInput
@@ -162,8 +166,10 @@ function saveScore(seconds) {
     console.log(scoreObject);
 
     var scores = getScoresFromLS();
+    // adds previous scores to next input
     scores.push(scoreObject);
     var scoresJSON = JSON.stringify(scores);
+    // sets the item in local storage
     localStorage.setItem("scores", scoresJSON);
     console.log(nameInput);
     nameInput.text("");
@@ -174,6 +180,7 @@ function saveScore(seconds) {
 
 
 function getScoresFromLS() {
+    // retrieves object from local storage
     scores = localStorage.getItem("scores");
     if (scores) {
         return JSON.parse(scores);
