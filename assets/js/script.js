@@ -80,7 +80,7 @@ function endGame() {
 }
 
 function startTime() {
-    secondsLeft = 75;
+    secondsLeft = 90;
     $(".timer").text("Time Left: " + secondsLeft);
     timerInterval = setInterval(function () {
         secondsLeft--;
@@ -125,6 +125,7 @@ function checkAnswers() {
         if (choosenAsnwerIndex == allQuestions[i].correctAnswer) {
             //alert("correct!");         
             $(".grade").text("Correct!");
+            secondsLeft = secondsLeft + 5;
         } else {
             //alert("wrong!")
             $(".grade").text("Wrong!");
@@ -133,6 +134,7 @@ function checkAnswers() {
                 secondsLeft = secondsLeft - 10;
             } else {
                 secondsLeft = 1;
+
             }
         }
         setTimeout(function () {
