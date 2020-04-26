@@ -13,33 +13,35 @@
     <link rel="icon" href="">
 </head>
 
-<body class="font highscore-body">
+<body class="highscore-body font">
     <div class="container">
-        <main class="score-border">
-            <header>
-                <h1 class="score-heading">High Scores</h1>
-            </header>
-            <!-- <section class="score-container">
-                <span class="high-scores-name"></span>
-                <span class="high-scores-score"></span>
-            </section> -->
+        <div class="row">
+            <aside class="col-md-3"></aside>
+            <main class="score-border col-md-6">
+                <header>
+                    <h1 class="score-heading font">High Scores</h1>
+                </header>
 
-            <div class="container" class="score-list">
-                <table>
-                    <thead>
-                        <th>Name</th>
-                        <th>Score</th>
-                    </thead>
-                    <tbody class="score-body"></tbody>
-                </table>
-            </div>
-            <section class="scores-btn">
-                <button type="button" onclick="window.location.href = 'index.html';"
-                    class="btn btn-warning btn-lg go-back">Try Again</button>
+                <div class="container score-list">
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </thead>
+                        <tbody class="score-body"></tbody>
+                    </table>
+                </div>
 
-                <button type="button" class="btn btn-warning btn-lg clear-score">Clear High Score</button>
-            </section>
 
+
+                <section class="scores-btn">
+                    <button type="button" onclick="window.location.href = 'index.html';"
+                        class="btn btn-warning btn-lg go-back">Try Again</button>
+
+                    <button type="button" class="btn btn-warning btn-lg clear-score">Clear High Score</button>
+                </section>
+        </div>
+        <aside class="col-md-3"></aside>
 
 
 

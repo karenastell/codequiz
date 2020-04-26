@@ -14,9 +14,8 @@ background-image: url(/assets/images/indexbackground.jpg);
 .highscore-body {
     background-image: url(/assets/images/highscoresbackground.jpg);
      height: 100%;
-     background-position: center; 
-     background-repeat: no-repeat; 
-     background-size: cover;
+     background-repeat: no-repeat;
+     
     
 } 
 
@@ -36,6 +35,10 @@ background-image: url(/assets/images/indexbackground.jpg);
     font-weight: bold;
     padding: 40px;
     
+}
+
+.submit-button {
+    margin-left: 15px;
 }
 
 .index-heading{
@@ -119,4 +122,36 @@ background-image: url(/assets/images/indexbackground.jpg);
 
 .name-input {
     margin: 15px auto;
+}
+
+.score-container {
+    display: none;
+    font-size: 45px;
+    margin-top: 50px;
+
+}
+
+
+.score-list table{
+    width: 100%;
+    font-size: 24px;
+    background-color: #ffc107;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+
+}
+
+.score-list table thead {
+    background-color: oldlace; 
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.score-list table tr:nth-child(even) {
+    background-color: lightcoral;
+
 }

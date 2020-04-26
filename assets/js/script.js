@@ -114,32 +114,35 @@ function displayQuestions() {
 
 
 function checkAnswers() {
+
+
     var buttonClicked = event.target;
     var choosenAsnwerIndex = buttonClicked.getAttribute("data-index");
-
-    console.log("choosenAnswerIndex", choosenAsnwerIndex);
-    console.log("correct answer" + allQuestions[i].correctAnswer);
-    $(".grade").show();
-    if (choosenAsnwerIndex == allQuestions[i].correctAnswer) {
-        //alert("correct!");         
-        $(".grade").text("Correct!");
-    } else {
-        //alert("wrong!")
-        $(".grade").text("Wrong!");
-        if (secondsLeft > 10) {
-            secondsLeft = secondsLeft - 10;
+    if (buttonClicked.matches("button")) {
+        console.log("choosenAnswerIndex", choosenAsnwerIndex);
+        console.log("correct answer" + allQuestions[i].correctAnswer);
+        $(".grade").show();
+        if (choosenAsnwerIndex == allQuestions[i].correctAnswer) {
+            //alert("correct!");         
+            $(".grade").text("Correct!");
         } else {
-            secondsLeft = 1;
+            //alert("wrong!")
+            $(".grade").text("Wrong!");
+            if (secondsLeft > 10) {
+                secondsLeft = secondsLeft - 10;
+            } else {
+                secondsLeft = 1;
+            }
         }
-    }
-    setTimeout(function () {
-        $(".grade").hide();
-    }, 1000);
-    i++;
-    if (i == 10) {
-        endGame();
-    } else {
-        displayQuestions();
+        setTimeout(function () {
+            $(".grade").hide();
+        }, 1000);
+        i++;
+        if (i == 10) {
+            endGame();
+        } else {
+            displayQuestions();
+        }
     }
 }
 
@@ -149,7 +152,9 @@ function checkAnswers() {
 
 
 function saveScore(seconds) {
+
     var nameInput = $(".name").val();
+
     var scoreObject = {
         score: secondsLeft,
         name: nameInput
