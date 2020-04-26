@@ -162,7 +162,6 @@ function saveScore(seconds) {
     localStorage.setItem("scores", scoresJSON);
     console.log(nameInput);
 
-
 }
 
 function getScoresFromLS() {
@@ -173,6 +172,7 @@ function getScoresFromLS() {
         return [];
     }
 }
+
 
 
 
