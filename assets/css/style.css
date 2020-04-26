@@ -7,12 +7,12 @@
 }
 .index-body {
 
-background-image: url(./assets/images/indexbackground.jpg);
+background-image: url(../images/indexbackground.jpg);
 }
 
 
 .highscore-body {
-    background-image: url(./assets/images/highscoresbackground.jpg);
+    background-image: url(../images/highscoresbackground.jpg);
      height: 100%;
      background-repeat: no-repeat;
      
