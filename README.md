@@ -1,7 +1,7 @@
 # codequiz
 
 
-Code Quiz - (Stupid States Law Quiz)
+Stupid States Law Quiz - (Code Quiz)
 
 This project is a quiz about the stupid random state laws in the US.  The user starts the quiz by clicking the "Start The Quiz" button.  They then have multiple choice questions about the stupid laws in different states and have 75 seconds to complete the 10 question quiz.  If the user gets a question correct they will simply move to the next question.  If the user gets a question wrong, 10 seconds will subtract from the time left and they will move onto the next question.  Correct and Wrong will show up on the bottom of the container to notify the user.
 
@@ -12,5 +12,5 @@ The high scores page will display the scores of the game.  From this page, the u
 
 This project was creaded using HTML, CSS, JavaScript, jQuery, and Bootstrap.
 
-The following link will bring you to the Random Password Generator: 
+The following link will bring you to the Stupid States Laws Quiz: 
 https://karenastell.github.io/codequiz/
