@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Stupid States Law Quiz
 
 
