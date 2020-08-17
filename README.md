@@ -11,7 +11,6 @@ The high scores page will display the scores of the game.  From this page, the u
 
 This project was creaded using HTML, CSS, JavaScript, jQuery, and Bootstrap.
 
-<<<<<<< HEAD
 ## Visual of Application
 
 ### Start of the Quiz
